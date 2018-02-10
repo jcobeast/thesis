@@ -1,8 +1,10 @@
-<?php include("../header.php");
-      include("trsidebar.php");?>
+<?php 
+include ("../dbconfig.php");
+include("../header.php");
+include("trsidebar.php");?>
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
-    <section class="content-header">
+  <section class="content-header">
       <h1>
         Dashboard | Doctor
         <small>Control panel</small>
@@ -41,10 +43,10 @@
       <div class="row">
         <!-- Left col -->
         
-    </div>
-      </section>
+      </div>
     </section>
-    </div>
+  </section>
+</div>
 	   
  
 <?php include("../footer.php");?>
