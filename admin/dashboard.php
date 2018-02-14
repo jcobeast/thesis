@@ -138,6 +138,8 @@ include("sidebar.php");
                                   </tr>
                                         <?php endwhile; ?>
                                 </tbody>
+
+
                               </table>
                             </div>
                        <!-- /.box-body -->
@@ -194,7 +196,6 @@ include("sidebar.php");
                       <!-- /.input group -->
                     </div>
                     <!-- /.form group -->
-                        
                     <div class="form-group">
                       <label>Schedule Today:</label>
 
@@ -213,6 +214,7 @@ include("sidebar.php");
             </div>
           </div>
     </section>
+
 </div>
             <!-- /.content -->
 <?php include("footer.php");?>

@@ -55,8 +55,8 @@ if(isset($_POST['submit'])) {
 	}
 
 	if ($suser && $sfname && $slname && $smname && $semail && $spass && $scont && $sdesc) {
-		$sql = "INSERT INTO `staff_info`(`staff_user`, `staff_email`, `staff_firstname`, `staff_lastname`, `staff_middlename`, `staff_password`, `staff_contnum`, `staff_desc`) 
-        VALUES ('$suser','$semail','$sfname','$slname','$smname','$spass','$scont','$sdesc')";
+		$sql = "INSERT INTO `staff_info`(`staff_user`, `staff_email`, `staff_firstname`, `staff_lastname`, `staff_middlename`, `staff_password`, `staff_contnum`, `staff_desc`,`acc_type`) 
+        VALUES ('$suser','$semail','$sfname','$slname','$smname','$spass','$scont','$sdesc','1')";
 
         $result = $con->query($sql);
 		$last_id = $con->insert_id;

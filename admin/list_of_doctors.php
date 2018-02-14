@@ -19,7 +19,7 @@ include('sidebar.php');
            <?php if(isset($asuccess)){ ?>
    <div class="alert alert-success alert-dismissible" role="alert">
   <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-  <strong>Added General Manager successfully.</strong>
+  <strong>Added doctor Account successfully.</strong>
 </div>
    <?php } ?>
    <?php if(isset($deasucc)){ ?>
@@ -66,6 +66,7 @@ include('sidebar.php');
                                     <th> Email </th>
                                     <th> Contact No. </th>
                                     <th> Description </th>
+                                    <th> Action </th>
                                  </tr>
                               </thead>
                               <tbody>
@@ -80,6 +81,8 @@ include('sidebar.php');
                                 <td><?=$row['email'];?></td>
                                 <td><?=$row['doc_contnum'];?></td>
                                 <td><?=$row['doc_desc'];?></td>
+                                <td><a href="#" class="btn btn-primary"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
+                                <a href="#" class="btn btn-danger"><i class="fa fa-trash" aria-hidden="true"></i></a></td>
                              </tr>
                              <?php endwhile; ?>
                               </tbody>
@@ -90,6 +93,7 @@ include('sidebar.php');
                                     <th> Email </th>
                                     <th> Contact No. </th>
                                     <th> Description </th>
+                                    <th> Action </th>
                                  </tr>
                               </tfoot>
                            </table>

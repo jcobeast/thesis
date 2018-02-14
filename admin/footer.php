@@ -117,6 +117,10 @@
       showInputs: false
     }); 
 
+function showAlert(){
+  alert("Save Changes? Click ok to save.");
+}
+
 </script>
 
 </body>
