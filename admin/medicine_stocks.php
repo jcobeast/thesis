@@ -70,7 +70,7 @@ include('sidebar.php');
                                     <th> Medicine Name </th>
                                     <th> Medicine Description </th>
                                     <th> Quantity </th>
-                                    <th> Amount Payable </th>
+                                    <th> Price </th>
                                     <th> Action </th>
                                  </tr>
                               </thead>
@@ -85,6 +85,8 @@ include('sidebar.php');
                                 <td><?=$row['med_desc'];?></td>
                                 <td><?=$row['med_quantity'];?></td>
                                 <td><?=$row['med_price'];?></td>
+                                <td><a href="#" class="btn btn-primary"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
+                                <a href="#" class="btn btn-danger"><i class="fa fa-trash" aria-hidden="true"></i></a></td>
                                 <td></td>
                               </tr>
                               <?php endwhile; ?>
@@ -95,7 +97,7 @@ include('sidebar.php');
                                     <th> Medicine Name </th>
                                     <th> Medicine Description </th>
                                     <th> Quantity </th>
-                                    <th> Amount Payable </th>
+                                    <th> Price </th>
                                     <th> Action </th>
                                  </tr>
                               </tfoot>
@@ -130,7 +132,7 @@ include('sidebar.php');
                       </div>
                       <div class="form-group">
                         <div class="col-md-2 col-sm-12 col-xs-12 col-md-offset-2">
-                           <label class="control-label">Amount payable </label><span id="sp">:</span> 
+                           <label class="control-label"> Price </label><span id="sp">:</span> 
                         </div>
                         <div class="col-md-6 col-sm-12 col-xs-12">
                            <input type="text" class="form-control" name="mamount">

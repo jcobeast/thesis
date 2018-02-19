@@ -19,7 +19,7 @@
            <?php if(isset($asuccess)){ ?>
    <div class="alert alert-success alert-dismissible" role="alert">
   <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-  <strong>Added Team Members successfully.</strong>
+  <strong>Added Patient successfully.</strong>
 </div>
    <?php } ?>
    <?php if(isset($deasucc)){ ?>
@@ -63,9 +63,10 @@
            <table id="example1" class="table table-bordered table-striped">
                               <thead>
                                  <tr>
-                                   <th> S No </th>
+                                    <th> S No </th>
                                     <th> Patient User Name </th>
                                     <th> Patient Email </th>
+                                    <th>Action</th>
                                  </tr>
                               </thead>
                               <tbody>
@@ -80,14 +81,17 @@
                                 <td><?=$i;?></td>
                                 <td><?=$row['username'];?></td>
                                   <td><?=$row['email'];?></td>
+                                  <td><a href="#" class="btn btn-primary"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
+                                <a href="#" class="btn btn-danger"><i class="fa fa-trash" aria-hidden="true"></i></a></td>
                              </tr>
                              <?php  $i++; }  ?>
                               </tbody>
                               <tfoot>
                                  <tr>
-                                  <th> S No </th>
+                                    <th> S No </th>
                                     <th> Patient User Name </th>
                                     <th> Patient Email </th>
+                                    <th>Action</th>
                                  </tr>
                               </tfoot>
                            </table>
@@ -96,45 +100,6 @@
 
                      </div>
                      <!-- /.box -->
-                     <div class="box box-primary">
-                            <div class="box-header with-border">
-                              <h3 class="box-title">Appointment Status</h3>
-
-                              <div class="box-tools pull-right">
-                                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
-                                </button>
-                              </div>
-                              <!-- /.box-tools -->
-                            </div>
-                            <!-- /.box-header -->
-                            <div class="box-body">
-                              <table id="example1" class="table table-bordered table-hover dataTable">
-                                <thead>
-                                  <tr>
-                                    <th>Patient ID</th>
-                                    <th>Patient Email</th>
-                                    <th>Patient Username</th>
-                                    <th>Patient Status</th>
-                                  </tr>
-                                </thead>
-                                <tbody>
-                                  <tr>
-                                        <?php 
-                                        $co    = "SELECT * FROM patient_info";
-                                        $coresult = $con->query($co);
-                                        $row  = mysqli_num_rows($coresult);
-                                        ?>
-
-                                        <?php while($row = $coresult->fetch_assoc()): ?>
-                                    <td><?php echo $row['pat_id']; ?></td>
-                                    <td><?php echo $row['email']; ?></td>
-                                    <td><?php echo $row['username']; ?></td>
-                                    <td><span class="label label-success">Approved</span></td>
-                                  </tr>
-                                        <?php endwhile; ?>
-                                </tbody>
-                              </table>
-                            </div>
                   </div>
                   <!-- /.col -->
                </div>

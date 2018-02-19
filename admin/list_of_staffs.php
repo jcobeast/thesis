@@ -68,6 +68,7 @@ include('sidebar.php');
                                     <th> Email </th>
                                     <th> Contact No. </th>
                                     <th> Description </th>
+                                    <th> Action </th>
                                  </tr>
                               </thead>
                               <tbody>
@@ -82,6 +83,8 @@ include('sidebar.php');
                                     <td><?=$row['email'];?></td>
                                     <td><?=$row['staff_contnum'];?></td>
                                     <td><?=$row['staff_desc'];?></td>
+                                    <td><a href="#" class="btn btn-primary"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
+                                <a href="#" class="btn btn-danger"><i class="fa fa-trash" aria-hidden="true"></i></a></td>
                                   </tr>
                                   <?php endwhile; ?>
                               </tbody>
@@ -92,6 +95,7 @@ include('sidebar.php');
                                     <th> Email </th>
                                     <th> Contact No. </th>
                                     <th> Description </th>
+                                    <th> Action </th>
                                  </tr>
                               </tfoot>
                            </table>

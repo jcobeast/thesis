@@ -36,38 +36,14 @@ include('sidebar.php');
             <div class="panel panel-info">
                <div class="panel-heading">Add Patient</div>
                <div class="panel-body">
-                  <form class="form-horizontal" role="form" method="post" action="#" enctype="multipart/form-data">  
+                  <form class="form-horizontal" role="form" method="post" action="save_patient_info.php" enctype="multipart/form-data">  
                   <div class="col-md-6">
                      <div class="form-group">
                         <div class="col-md-3 col-sm-3 col-sx-12">
                            <label class="control-label">Username </label><span id="sp">:</span> 
                         </div>
                         <div class="col-md-9 col-sm-9 col-sx-12">
-                           <input type="text" class="form-control" name="suser">
-                        </div>
-                     </div>
-                     <div class="form-group">
-                        <div class="col-md-3 col-sm-3 col-sx-12">
-                           <label class="control-label">Firstname </label><span id="sp">:</span> 
-                        </div>
-                        <div class="col-md-9 col-sm-9 col-sx-12">
-                           <input type="text" class="form-control" name="sfname">
-                        </div>
-                     </div>
-                     <div class="form-group">
-                        <div class="col-md-3 col-sm-3 col-sx-12">
-                           <label class="control-label">Lastname </label><span id="sp">:</span> 
-                        </div>
-                        <div class="col-md-9 col-sm-9 col-sx-12">
-                           <input type="text" class="form-control" name="slname">
-                        </div>
-                     </div>
-                      <div class="form-group">
-                        <div class="col-md-3 col-sm-3 col-sx-12">
-                           <label class="control-label">Middlename </label><span id="sp">:</span> 
-                        </div>
-                        <div class="col-md-9 col-sm-9 col-sx-12">
-                           <input type="text" class="form-control" name="smname">
+                           <input type="text" class="form-control" name="puser">
                         </div>
                      </div>
                      <div class="form-group">
@@ -75,26 +51,87 @@ include('sidebar.php');
                            <label class="control-label">Email </label><span id="sp">:</span> 
                         </div>
                         <div class="col-md-9 col-sm-9 col-sx-12">
-                           <input type="email" class="form-control" name="semail">
+                           <input type="email" class="form-control" name="pemail">
                         </div>
                      </div>
-                  </div>
-                  
-                  <div class="col-md-6">           
                      <div class="form-group">
                         <div class="col-md-3 col-sm-3 col-sx-12">
                            <label class="control-label">Password </label><span id="sp">:</span> 
                         </div>
                         <div class="col-md-9 col-sm-9 col-sx-12">
-                           <input type="password" class="form-control" name="spass">
+                           <input type="password" class="form-control" name="ppass">
                         </div>
                      </div>
+                     <div class="form-group">
+                        <div class="col-md-3 col-sm-3 col-sx-12">
+                           <label class="control-label">Firstname </label><span id="sp">:</span> 
+                        </div>
+                        <div class="col-md-9 col-sm-9 col-sx-12">
+                           <input type="text" class="form-control" name="pfname">
+                        </div>
+                     </div>
+                     <div class="form-group">
+                        <div class="col-md-3 col-sm-3 col-sx-12">
+                           <label class="control-label">Lastname </label><span id="sp">:</span> 
+                        </div>
+                        <div class="col-md-9 col-sm-9 col-sx-12">
+                           <input type="text" class="form-control" name="plname">
+                        </div>
+                     </div>
+                      <div class="form-group">
+                        <div class="col-md-3 col-sm-3 col-sx-12">
+                           <label class="control-label">Middlename </label><span id="sp">:</span> 
+                        </div>
+                        <div class="col-md-9 col-sm-9 col-sx-12">
+                           <input type="text" class="form-control" name="pmname">
+                        </div>
+                     </div>
+                     
+                     <div class="form-group">
+                        <div class="col-md-3 col-sm-3 col-sx-12">
+                           <label class="control-label">Age </label><span id="sp">:</span> 
+                        </div>
+                        <div class="col-md-9 col-sm-9 col-sx-12">
+                           <input type="text" class="form-control" name="page">
+                        </div>
+                     </div>
+                     
+                  </div>
+                  
+
+                  <div class="col-md-6">           
                      <div class="form-group">
                         <div class="col-md-3 col-sm-3 col-sx-12">
                            <label class="control-label">Contact No. </label><span id="sp">:</span>
                         </div>
                         <div class="col-md-9 col-sm-9 col-sx-12">
-                           <input type="text" class="form-control" name="scont">
+                           <input type="text" class="form-control" name="pcont">
+                        </div>
+                     </div>
+                     <div class="form-group">
+                        <div class="col-md-3 col-sm-3 col-sx-12">
+                           <label class="control-label">Guardian </label><span id="sp">:</span> 
+                        </div>
+                        <div class="col-md-9 col-sm-9 col-sx-12">
+                           <input type="text" class="form-control" name="pgrd">
+                        </div>
+                     </div>
+                     <div class="form-group">
+                        <div class="col-md-3 col-sm-3 col-sx-12">
+                           <label class="control-label">Address </label><span id="sp">:</span> 
+                        </div>
+                        <div class="col-md-9 col-sm-9 col-sx-12">
+                           <input type="text" class="form-control" name="padd" placeholder="House No./Street/Barangay"><br>
+                           <select class="form-control" name="pprov" id="choice" onChange="changecat(this.value);">
+                               <option value="" disabled selected>Select Province</option>
+                               <option value="A">Nueva Ecija</option>
+                               <option value="B">Bulacan</option>
+                               <option value="C">Tarlac</option>
+                           </select>
+                           <br>
+                           <select class="form-control" name="pcity" id="category">
+                               <option value="" disabled selected>Select City</option>
+                           </select>
                         </div>
                      </div>
                      <br>

@@ -1,7 +1,26 @@
 <?php 
 include("header.php");
 include('sidebar.php');
+
+$sql = "SELECT * FROM doctor_info";
+$result = $con->query($sql);
 ?>
+ <div id="dataModal" class="modal fade">  
+      <div class="modal-dialog">  
+           <div class="modal-content">  
+                <div class="modal-header">  
+                     <button type="button" class="close" data-dismiss="modal">&times;</button>  
+                     <h4 class="modal-title">Edit Details</h4>  
+                </div>  
+                <div class="modal-body" id="employee_detail">  
+                </div>  
+                <div class="modal-footer">  
+                     <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
+                      <button type="button" class="btn btn-primary">Save changes</button>
+                </div>  
+           </div>  
+      </div>  
+ </div>
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
 
@@ -57,11 +76,10 @@ include('sidebar.php');
          <div class="panel panel-info">
 	          <div class="panel-heading">Clinic Doctor List </div>
 		         <div class="panel-body">
-              <div class="box-body">
+              <div class="box-body table-responsive">
                            <table id="example1" class="table table-bordered table-striped">
                               <thead>
                                  <tr>
-                                    <th> Doctor ID NO. </th>
                                     <th> Fullname </th>
                                     <th> Email </th>
                                     <th> Contact No. </th>
@@ -71,24 +89,22 @@ include('sidebar.php');
                               </thead>
                               <tbody>
                                
-                                <?php  $sql = "SELECT * from doctor_info";
-                                  $result = $con->query($sql);
+                                <?php  
                                   
                                 while($row = $result->fetch_assoc()): ?>
                                 <tr>
-                                <td><?=$row['doc_id'];?></td>
-                                <td><?=$row['doc_firstname'].' '.$row['doc_lastname'];?></td>
+                                <td><?=ucfirst($row['doc_firstname']).' '.ucfirst($row['doc_middlename'][0]).'.'.' '.$row['doc_lastname'];?></td>
                                 <td><?=$row['email'];?></td>
                                 <td><?=$row['doc_contnum'];?></td>
                                 <td><?=$row['doc_desc'];?></td>
-                                <td><a href="#" class="btn btn-primary"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
-                                <a href="#" class="btn btn-danger"><i class="fa fa-trash" aria-hidden="true"></i></a></td>
+                                <td><input type="button" name="view" value="view" id="<?php echo $row["doc_id"]; ?>" class="btn btn-info btn-xs view_data" /></td>
+                                <!-- <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
+                                <a href="#" class="btn btn-danger"><i class="fa fa-trash" aria-hidden="true"></i></a> -->
                              </tr>
                              <?php endwhile; ?>
                               </tbody>
                               <tfoot>
                                  <tr>
-                                    <th> Doctor ID NO. </th>
                                     <th> Fullname </th>
                                     <th> Email </th>
                                     <th> Contact No. </th>

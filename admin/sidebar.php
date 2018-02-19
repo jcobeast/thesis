@@ -45,7 +45,7 @@
                   </li>
                   <li class="treeview">
                      <a href="appointments.php">
-                     <i class="fa fa-flask"></i> <span>Appointment List</span></a>
+                     <i class="fa fa-calendar"></i> <span>Appointment List</span></a>
                   </li>
                   <li class="treeview">
                      <a href="lab_test_list.php">

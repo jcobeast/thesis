@@ -121,7 +121,43 @@ function showAlert(){
   alert("Save Changes? Click ok to save.");
 }
 
+var ByCategory = {
+    A: ["San Jose City", "Cabanatuan City", "Munoz City", "Others"],
+    B: ["Bulacan", "Malolos", "Bocaue", "Others"],
+    C: ["Tarlac", "Camuiling", "Gerona", "Lapaz", "Others"]
+}
+
+    function changecat(value) {
+        if (value.length == 0) document.getElementById("category").innerHTML = "<option></option>";
+        else {
+            var catOptions = "";
+            for (categoryId in ByCategory[value]) {
+                catOptions += "<option>" + ByCategory[value][categoryId] + "</option>";
+            }
+            document.getElementById("category").innerHTML = catOptions;
+        }
+    }
+
+ $(document).ready(function(){  
+      $('.view_data').click(function(){  
+           var id = $(this).attr("id");  
+           $.ajax({  
+                url:"update_doctor.php",  
+                method:"post",  
+                data:{id:id},  
+                success:function(data){  
+                     $('#employee_detail').html(data);  
+                     $('#dataModal').modal("show");  
+                }  
+           });  
+      });  
+ });  
+
 </script>
+
 
 </body>
 </html>
+
+
+

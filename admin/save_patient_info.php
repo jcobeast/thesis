@@ -1,68 +1,81 @@
 <?php
 include("../dbconfig.php");
 
-$suser = $sfname = $slname = $smname = $semail = $spass = $scont = $sdesc ="";
+$puser = $pfname = $plname = $pmname = $pemail = $ppass = $pcont = $page = $pgrd = $padd = $pcity = $pprov = "";
 
 
 if(isset($_POST['submit'])) {
 
-	if (empty($_POST['suser'])) {
+	if (empty($_POST['puser'])) {
 		echo "<script>window.location.assign('add_staff.php?error=true');</script>";
 	} else {
-		$suser = $_POST['suser'];
+		$puser = $_POST['puser'];
 	} 
 
-	if (empty($_POST['semail'])) {
+	if (empty($_POST['pfname'])) {
 		echo "<script>window.location.assign('add_staff.php?error=true');</script>";
 	} else {
-		$semail = $_POST['semail'];
+		$pfname = $_POST['pfname'];
 	}
 
-	if (empty($_POST['sfname'])) {
+	if (empty($_POST['plname'])) {
 		echo "<script>window.location.assign('add_staff.php?error=true');</script>";
 	} else {
-		$sfname = $_POST['sfname'];
+		$plname = $_POST['plname'];
 	}
 
-	if (empty($_POST['slname'])) {
+	if (empty($_POST['pmname'])) {
 		echo "<script>window.location.assign('add_staff.php?error=true');</script>";
 	} else {
-		$slname = $_POST['slname'];
+		$pmname = $_POST['pmname'];
 	}
 
-	if (empty($_POST['smname'])) {
+	if (empty($_POST['pemail'])) {
 		echo "<script>window.location.assign('add_staff.php?error=true');</script>";
 	} else {
-		$smname = $_POST['smname'];
+		$pemail = $_POST['pemail'];
 	}
 
-	if (empty($_POST['spass'])) {
+	if (empty($_POST['ppass'])) {
 		echo "<script>window.location.assign('add_staff.php?error=true');</script>";
 	} else {
-		$spass = $_POST['spass'];
+		$ppass = $_POST['ppass'];
 	}
 
-	if (empty($_POST['scont'])) {
+	if (empty($_POST['pcont'])) {
 		echo "<script>window.location.assign('add_staff.php?error=true');</script>";
 	} else {
-		$scont = $_POST['scont'];
+		$pcont = $_POST['pcont'];
 	}
 
-	if (empty($_POST['sdesc'])) {
+	if (empty($_POST['page'])) {
 		echo "<script>window.location.assign('add_staff.php?error=true');</script>";
 	} else {
-		$sdesc = $_POST['sdesc'];
+		$page = $_POST['page'];
 	}
 
-	if ($suser && $sfname && $slname && $smname && $semail && $spass && $scont && $sdesc) {
-		$sql = "INSERT INTO `staff_info`(`staff_user`, `staff_email`, `staff_firstname`, `staff_lastname`, `staff_middlename`, `staff_password`, `staff_contnum`, `staff_desc`, `acc_type`) 
-        VALUES ('$suser','$semail','$sfname','$slname','$smname','$spass','$scont','$sdesc','3')";
+	if (empty($_POST['pgrd'])) {
+		echo "<script>window.location.assign('add_staff.php?error=true');</script>";
+	} else {
+		$pgrd = $_POST['pgrd'];
+	}
+
+	if (empty($_POST['padd']) && empty($_POST['pcity']) && empty($_POST['pprov'])) {
+		echo "<script>window.location.assign('add_staff.php?error=true');</script>";
+	} else {
+		$padd = $_POST['padd']. ',' .$_POST['pcity']. ',' .$_POST['pprov'];
+	}
+
+
+	if ($puser && $pfname && $plname && $pmname && $pemail && $ppass && $pcont && $page && $pgrd && $padd) {
+		$sql = "INSERT INTO `patient_info`(`username`, `email`, `password`, `pat_firstname`, `pat_lastname`, `pat_middlename`, `pat_age`, `pat_guardian`, `pat_address`, `pat_contnum`, `acc_type`) 
+        VALUES ('$puser', '$pemail', '$ppass', '$pfname','$plname','$pmname', '$page','$pgrd','$padd','$pcont','3')";
 
         $result = $con->query($sql);
 		$last_id = $con->insert_id;
 
 		if($result == True ){
-			echo "<script>window.location.assign('list_of_staffs.php?asuccess=true');</script>";
+			echo "<script>window.location.assign('list_of_patients.php?asuccess=true');</script>";
 		}
 
 	}
