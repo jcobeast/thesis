@@ -117,10 +117,6 @@
       showInputs: false
     }); 
 
-function showAlert(){
-  alert("Save Changes? Click ok to save.");
-}
-
 var ByCategory = {
     A: ["San Jose City", "Cabanatuan City", "Munoz City", "Others"],
     B: ["Bulacan", "Malolos", "Bocaue", "Others"],
@@ -138,21 +134,120 @@ var ByCategory = {
         }
     }
 
- $(document).ready(function(){  
-      $('.view_data').click(function(){  
-           var id = $(this).attr("id");  
+
+/// patient info delete and update
+$(document).ready(function(){  
+      $('.patupdate').click(function(){
+           var id = $(this).parents("tr").attr("id"); 
            $.ajax({  
-                url:"update_doctor.php",  
-                method:"post",  
+                url:"update_patient.php",  
+                method:"GET",  
                 data:{id:id},  
                 success:function(data){  
-                     $('#employee_detail').html(data);  
+                     window.location.href = 'update_patient.php';
+                }  
+           });  
+      }); 
+
+// patient delete function
+      $(".patdelete").click(function(){
+        var id = $(this).parents("tr").attr("id");
+        if(confirm('Are you sure to remove this record ?'))
+        {
+            $.ajax({
+               url: 'delete_patient.php',
+               type: 'GET',
+               data: {id: id},
+               error: function() {
+                  alert('Something is wrong');
+               },
+               success: function(data) {
+                    $("#"+id).remove();
+                    window.location.href = 'list_of_patients.php?error=true';  
+               }
+            });
+        }
+    }); 
+ });
+////end//////////
+
+// doctor function
+// update function
+
+ $(document).ready(function(){  
+      $('.view_data').click(function(){
+           var id = $(this).parents("tr").attr("id"); 
+           $.ajax({  
+                url:"update_doctor.php",  
+                method:"GET",  
+                data:{id:id},  
+                success:function(data){  
+                     $('#doctor_detail').html(data);  
                      $('#dataModal').modal("show");  
                 }  
            });  
-      });  
- });  
+      }); 
 
+// delete function
+      $(".remove").click(function(){
+        var id = $(this).parents("tr").attr("id");
+        if(confirm('Are you sure to remove this record ?'))
+        {
+            $.ajax({
+               url: 'delete_doctor.php',
+               type: 'GET',
+               data: {id: id},
+               error: function() {
+                  alert('Something is wrong');
+               },
+               success: function(data) {
+                    $("#"+id).remove();
+                    window.location.href = 'list_of_doctors.php?error=true';  
+               }
+            });
+        }
+    }); 
+ }); 
+/////////////////////////
+/////staff function
+
+  $(document).ready(function(){  
+      $('.update').click(function(){
+           var id = $(this).parents("tr").attr("id"); 
+           $.ajax({  
+                url:"update_staff.php",  
+                method:"GET",  
+                data:{id:id},  
+                success:function(data){  
+                     $('#staff_detail').html(data);  
+                     $('#dataModal').modal("show");
+                     console.log('Update Sucess'); 
+                }  
+           });  
+      }); 
+
+// delete function
+      $(".delete").click(function(){
+        var id = $(this).parents("tr").attr("id");
+        if(confirm('Are you sure to remove this record ?'))
+        {
+            $.ajax({
+               url: 'delete_staff.php',
+               type: 'GET',
+               data: {id: id},
+               error: function() {
+                  alert('Something is wrong');
+                  console.log('Error Deleting'); 
+               },
+               success: function(data) {
+                    $("#"+id).remove();
+                    window.location.href = 'list_of_staffs.php?error=true';
+                    console.log('Delete Sucess');   
+               }
+            });
+        }
+    }); 
+ }); 
 </script>
 
 

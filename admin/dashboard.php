@@ -117,8 +117,9 @@ include("sidebar.php");
                                 <thead>
                                   <tr>
                                     <th>Patient ID</th>
-                                    <th>Patient Email</th>
-                                    <th>Patient Username</th>
+                                    <th>Patient Fullname</th>
+                                    <th>Patient Age</th>
+                                    <th>Date Added</th>
                                     <th>Patient Status</th>
                                   </tr>
                                 </thead>
@@ -128,17 +129,34 @@ include("sidebar.php");
                                         $co    = "SELECT * FROM patient_info";
                                         $coresult = $con->query($co);
                                         $row  = mysqli_num_rows($coresult);
+
+                                        
                                         ?>
 
-                                        <?php while($row = $coresult->fetch_assoc()): ?>
+                                        <?php while($row = $coresult->fetch_assoc()): 
+
+                                        $date= new DateTime($row['pat_date_added']) ;  
+                                        
+
+                                        ?>
                                     <td><?php echo $row['pat_id']; ?></td>
-                                    <td><?php echo $row['email']; ?></td>
-                                    <td><?php echo $row['username']; ?></td>
+                                    <td><?=ucfirst($row['pat_firstname']).' '.ucfirst($row['pat_middlename'][0]).'.'.' '.$row['pat_lastname'];?></td>
+                                    <td><?php echo $row['pat_age']; ?></td>
+
+                                    <td><?php echo $date->format('Y-m-d'); ?></td>
                                     <td><span class="label label-success">Approved</span></td>
                                   </tr>
                                         <?php endwhile; ?>
                                 </tbody>
-
+                                <tfoot>
+                                  <tr>
+                                    <th>Patient ID</th>
+                                    <th>Patient Fullname</th>
+                                    <th>Patient Age</th>
+                                    <th>Date Added</th>
+                                    <th>Patient Status</th>
+                                  </tr>
+                                </tfoot>
 
                               </table>
                             </div>
@@ -173,17 +191,17 @@ include("sidebar.php");
           </div>
           <!-- /.box -->
         </div>
-              <div class="col-md-4"> 
+<!--               <div class="col-md-4"> 
                 <div class="box box-success">
                   <div class="box-header">
                     <h3 class="box-title">Date Now</h3>
-                    <div class="box-tools pull-right">
+                     <div class="box-tools pull-right">
                                 <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
                                 </button>
-                              </div>
+                      </div>
                   </div>
                   <div class="box-body">
-                    <!-- Date -->
+                   
                     <div class="form-group">
                       <label>Date:</label>
 
@@ -193,9 +211,9 @@ include("sidebar.php");
                         </div>
                         <input type="text" class="form-control pull-right" id="datepicker">
                       </div>
-                      <!-- /.input group -->
+                   
                     </div>
-                    <!-- /.form group -->
+                   
                     <div class="form-group">
                       <label>Schedule Today:</label>
 
@@ -205,12 +223,11 @@ include("sidebar.php");
                         </div>
                         <input type="text" class="form-control pull-right" id="reservation">
                       </div>
-                      <!-- /.input group -->
+                    
                     </div>
                   </div>
-                  <!-- /.box-body -->
                 </div>        
-              </div>
+              </div> -->
             </div>
           </div>
     </section>

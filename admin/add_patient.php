@@ -99,7 +99,20 @@ include('sidebar.php');
                   </div>
                   
 
-                  <div class="col-md-6">           
+                  <div class="col-md-6">
+                  <div class="form-group">
+                        <div class="col-md-3 col-sm-3 col-sx-12">     
+                           <label class="control-label">Birthdate </label><span id="sp">:</span>
+                        </div>
+                        <div class="col-md-9 col-sm-9 col-sx-12">
+                           <div class="input-group date">
+                              <div class="input-group-addon">
+                                <i class="fa fa-calendar"></i>
+                              </div>
+                              <input type="text" class="form-control pull-right" name="pbdate" id="datepicker">
+                           </div>
+                        </div>
+                     </div>         
                      <div class="form-group">
                         <div class="col-md-3 col-sm-3 col-sx-12">
                            <label class="control-label">Contact No. </label><span id="sp">:</span>

@@ -1,7 +1,7 @@
 <?php
 include("../dbconfig.php");
 
-$puser = $pfname = $plname = $pmname = $pemail = $ppass = $pcont = $page = $pgrd = $padd = $pcity = $pprov = "";
+$puser = $pfname = $plname = $pmname = $pemail = $ppass = $pcont = $page = $pbdate = $pgrd = $padd = $pcity = $pprov = "";
 
 
 if(isset($_POST['submit'])) {
@@ -42,6 +42,12 @@ if(isset($_POST['submit'])) {
 		$ppass = $_POST['ppass'];
 	}
 
+	if (empty($_POST['pbdate'])) {
+		echo "<script>window.location.assign('add_staff.php?error=true');</script>";
+	} else {
+		$pbdate = $_POST['pbdate'];
+	}
+
 	if (empty($_POST['pcont'])) {
 		echo "<script>window.location.assign('add_staff.php?error=true');</script>";
 	} else {
@@ -67,9 +73,9 @@ if(isset($_POST['submit'])) {
 	}
 
 
-	if ($puser && $pfname && $plname && $pmname && $pemail && $ppass && $pcont && $page && $pgrd && $padd) {
-		$sql = "INSERT INTO `patient_info`(`username`, `email`, `password`, `pat_firstname`, `pat_lastname`, `pat_middlename`, `pat_age`, `pat_guardian`, `pat_address`, `pat_contnum`, `acc_type`) 
-        VALUES ('$puser', '$pemail', '$ppass', '$pfname','$plname','$pmname', '$page','$pgrd','$padd','$pcont','3')";
+	if ($puser && $pfname && $plname && $pmname && $pemail && $ppass && $pbdate && $pcont && $page && $pgrd && $padd) {
+		$sql = "INSERT INTO `patient_info`(`username`, `email`, `password`, `pat_firstname`, `pat_lastname`, `pat_middlename`, `birthdate`, `pat_age`, `pat_guardian`, `pat_address`, `pat_contnum`, `acc_type`) 
+        VALUES ('$puser', '$pemail', '$ppass', '$pfname','$plname','$pmname','$pbdate','$page','$pgrd','$padd','$pcont','3')";
 
         $result = $con->query($sql);
 		$last_id = $con->insert_id;

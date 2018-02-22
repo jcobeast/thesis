@@ -12,15 +12,15 @@ $result = $con->query($sql);
                      <button type="button" class="close" data-dismiss="modal">&times;</button>  
                      <h4 class="modal-title">Edit Details</h4>  
                 </div>  
-                <div class="modal-body" id="employee_detail">  
+                <div class="modal-body" id="doctor_detail">  
                 </div>  
                 <div class="modal-footer">  
                      <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
-                      <button type="button" class="btn btn-primary">Save changes</button>
                 </div>  
            </div>  
       </div>  
  </div>
+ 
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
 
@@ -68,7 +68,7 @@ $result = $con->query($sql);
    <?php if(isset($error)){ ?>
    <div class="alert alert-danger alert-dismissible" role="alert">
   <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-  <strong>Deleted Unsuccessfully.</strong>
+  <strong>Deleted Successfully.</strong>
 </div>
    <?php } ?>
    <a href="add_doctor.php" class="btn btn-primary pull-right"><i class="fa fa-plus" aria-hidden="true"></i>&nbspAdd Clinic Doctor</a>
@@ -90,16 +90,18 @@ $result = $con->query($sql);
                               <tbody>
                                
                                 <?php  
-                                  
-                                while($row = $result->fetch_assoc()): ?>
-                                <tr>
-                                <td><?=ucfirst($row['doc_firstname']).' '.ucfirst($row['doc_middlename'][0]).'.'.' '.$row['doc_lastname'];?></td>
+                                while($row = $result->fetch_assoc()):
+                                ?>
+                                <tr id="<?php echo $row["doc_id"]; ?>">
+                                <td><?='Dr.'.' '.ucfirst($row['doc_firstname']).' '.ucfirst($row['doc_middlename'][0]).'.'.' '.$row['doc_lastname'];?></td>
                                 <td><?=$row['email'];?></td>
                                 <td><?=$row['doc_contnum'];?></td>
                                 <td><?=$row['doc_desc'];?></td>
-                                <td><input type="button" name="view" value="view" id="<?php echo $row["doc_id"]; ?>" class="btn btn-info btn-xs view_data" /></td>
-                                <!-- <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
-                                <a href="#" class="btn btn-danger"><i class="fa fa-trash" aria-hidden="true"></i></a> -->
+                                <td>
+                                <button type="button" class="btn btn-success btn-xs view_data"><span class="glyphicon glyphicon-edit"></span></button>
+
+                                <button type="button" class="btn btn-danger btn-xs remove"><span class="glyphicon glyphicon-trash"></span></button>
+                                </td>
                              </tr>
                              <?php endwhile; ?>
                               </tbody>

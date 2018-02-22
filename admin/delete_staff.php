@@ -5,7 +5,7 @@ $id = $_GET['id'];
 
 if (isset($id)) {
 
-	$sql = "DELETE FROM doctor_info WHERE doc_id = '$id'";
+	$sql = "DELETE FROM staff_info WHERE staff_id = '$id'";
 	$con->query($sql);
 } 
 

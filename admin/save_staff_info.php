@@ -55,7 +55,7 @@ if(isset($_POST['submit'])) {
 	}
 
 	if ($suser && $sfname && $slname && $smname && $semail && $spass && $scont && $sdesc) {
-		$sql = "INSERT INTO `staff_info`(`staff_user`, `staff_email`, `staff_firstname`, `staff_lastname`, `staff_middlename`, `staff_password`, `staff_contnum`, `staff_desc`,`acc_type`) 
+		$sql = "INSERT INTO `staff_info`(`username`, `email`, `staff_firstname`, `staff_lastname`, `staff_middlename`, `password`, `staff_contnum`, `staff_desc`,`acc_type`) 
         VALUES ('$suser','$semail','$sfname','$slname','$smname','$spass','$scont','$sdesc','1')";
 
         $result = $con->query($sql);
@@ -63,8 +63,11 @@ if(isset($_POST['submit'])) {
 
 		if($result == True ){
 			echo "<script>window.location.assign('list_of_staffs.php?asuccess=true');</script>";
-		}
+			
+		} else {
 
+			echo "<script>window.location.assign('add_staff.php?error=true');</script>";
+		}
 	}
 }
 

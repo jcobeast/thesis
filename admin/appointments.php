@@ -62,38 +62,42 @@ include('sidebar.php');
               <li><a href="#tab_2" data-toggle="tab"><i class="fa fa-plus" aria-hidden="true"></i>&nbspAdd New Appointment</a></li>
             </ul>
             <div class="tab-content">
-              <div class="tab-pane active" id="tab_1">
+              <div class="tab-pane table-responsive active" id="tab_1">
                   <table id="example1" class="table table-bordered table-striped">
                               <thead>
                                  <tr>
                                     <th> ID </th>
-                                    <th> Patient </th>
-                                    <th> Description </th>
-                                    <th> Date </th>
+                                    <th> Patient Name </th>
+                                    <th> Date of Appointment </th>
                                     <th> Action </th>
                                  </tr>
                               </thead>
                               <tbody>
-                                     <?php  $sql = "SELECT * from medicines";
-                                  $result = $con->query($sql);
-                                  
+                                     <?php  $sql = "SELECT * from patient_info";
+                                  $result = $con->query($sql);                 
                                 while($row = $result->fetch_assoc()): ?>
                               <tr>
-                                <td><?=$row['med_id'];?></td>
-                                <td><?=$row['med_name'];?></td>
-                                <td><?=$row['med_desc'];?></td>
-                                <td><?=$row['med_quantity'];?></td>
-                                <td><?=$row['med_price'];?></td>
-                                <td></td>
+                                <td><?=$row['pat_id'];?></td>
+                                <td><?=ucfirst($row['pat_firstname']).' '.ucfirst($row['pat_middlename'][0]).'.'.' '.$row['pat_lastname'];?></td>
+                                <td><?=$row['pat_date_added'];?></td>
+                                <td>
+                                  <center>
+                                  <button type="button" class="btn btn-success btn-xs"><span class="glyphicon glyphicon-eye-open"></span></button>
+
+                                  <button type="button" class="btn btn-primary btn-xs"><span class="glyphicon glyphicon-edit"></span></button>
+
+                                  <button type="button" class="btn btn-danger btn-xs"><span class="glyphicon glyphicon-trash"></span></button>
+                                  </center>
+                                </td>
+
                               </tr>
                               <?php endwhile; ?>
                               </tbody>
                               <tfoot>
                                  <tr>
                                     <th> ID </th>
-                                    <th> Patient </th>
-                                    <th> Description </th>
-                                    <th> Date </th>
+                                    <th> Patient Name </th>
+                                    <th> Date of Appointment </th>
                                     <th> Action </th>
                                  </tr>
                               </tfoot>
@@ -104,7 +108,7 @@ include('sidebar.php');
                 <form class="form-horizontal" role="form" method="post" action="add_medicine.php" enctype="multipart/form-data">
                       <div class="form-group">
                         <div class="col-md-2 col-sm-12 col-xs-12 col-md-offset-2">
-                           <label class="control-label">Medicine name </label><span id="sp">:</span> 
+                           <label class="control-label">Patient name </label><span id="sp">:</span> 
                         </div>
                         <div class="col-md-6 col-sm-12 col-xs-12">
                            <input type="text" class="form-control" name="mname">
@@ -112,26 +116,10 @@ include('sidebar.php');
                       </div>
                       <div class="form-group">
                         <div class="col-md-2 col-sm-12 col-xs-12 col-md-offset-2">
-                           <label class="control-label">Medicine description </label><span id="sp">:</span> 
+                           <label class="control-label">Appointment Description </label><span id="sp">:</span> 
                         </div>
                         <div class="col-md-6 col-sm-12 col-xs-12">
                            <input type="text" class="form-control" name="mdesc">
-                        </div>
-                      </div>
-                       <div class="form-group">
-                        <div class="col-md-2 col-sm-12 col-xs-12 col-md-offset-2">
-                           <label class="control-label">Quantity </label><span id="sp">:</span> 
-                        </div>
-                        <div class="col-md-6 col-sm-12 col-xs-12">
-                           <input type="number" class="form-control" min="1" max="100" name="mquantity">
-                        </div>
-                      </div>
-                      <div class="form-group">
-                        <div class="col-md-2 col-sm-12 col-xs-12 col-md-offset-2">
-                           <label class="control-label">Amount payable </label><span id="sp">:</span> 
-                        </div>
-                        <div class="col-md-6 col-sm-12 col-xs-12">
-                           <input type="text" class="form-control" name="mamount">
                         </div>
                       </div>
                       <div class="form-group">

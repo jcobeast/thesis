@@ -109,7 +109,7 @@
                   </div>
                   <div class="col-md-12 col-sm-12 col-xs-12">  
                      <div class="button-group pull-right">
-                        <button type="submit" class="btn btn-success" name="submit" onclick="showAlert();"><i class="fa fa-check" aria-hidden="true"></i>&nbspAdd Doctor Info</button>
+                        <button type="submit" class="btn btn-success" name="submit"><i class="fa fa-check" aria-hidden="true"></i>&nbspAdd Doctor Info</button>
                         &nbsp
                         <button type="reset" class="btn btn-danger"><i class="fa fa-times" aria-hidden="true"></i>&nbspCancel</button>
                      </div>
