@@ -1,6 +1,6 @@
 <?php 
-include("header.php");
-include('sidebar.php');
+include("../header.php");
+include('trsidebar.php');
 $sql = "SELECT * from medicines";
 $result = $con->query($sql);
 ?>
@@ -26,7 +26,7 @@ $result = $con->query($sql);
         MEDICINES
       </h1>
       <ol class="breadcrumb">
-        <li><a href="index.php"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li><a href="doctor.php"><i class="fa fa-dashboard"></i> Home</a></li>
         <li class="active">Medicine Stocks </li>
       </ol>
        
@@ -144,7 +144,7 @@ $result = $con->query($sql);
                       </div>
                        <div class="form-group">
                         <div class="col-md-2 col-sm-12 col-xs-12 col-md-offset-2">
-                           <label class="control-label">Quantity </label><span id="sp">:</span> 
+                           <label class="control-label"> Quantity </label><span id="sp">:</span> 
                         </div>
                         <div class="col-md-6 col-sm-12 col-xs-12">
                            <input type="number" class="form-control" min="1" max="100" name="mquantity">
@@ -182,4 +182,4 @@ $result = $con->query($sql);
       
 
 
-<?php include('footer.php');?>
+<?php include('../footer.php');?>

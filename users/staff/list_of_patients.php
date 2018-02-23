@@ -1,6 +1,6 @@
 <?php 
-include("header.php");
-include('sidebar.php');
+include("../header.php");
+include('susidebar.php');
 
 $sql = "SELECT * FROM `patient_info` ORDER BY pat_firstname ASC";
 $result = $con->query($sql);
@@ -30,7 +30,7 @@ $result = $con->query($sql);
         
       </h1>
       <ol class="breadcrumb">
-        <li><a href="index.php"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li><a href="staff.php"><i class="fa fa-dashboard"></i> Home</a></li>
         <li class="active">Patients List </li>
       </ol>
        
@@ -137,4 +137,4 @@ $result = $con->query($sql);
             <!-- /.content -->
           </div>
          <!-- /.content-wrapper -->
-      <?php include('footer.php');?>
+      <?php include('../footer.php');?>

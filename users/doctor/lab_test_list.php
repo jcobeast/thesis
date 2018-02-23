@@ -1,6 +1,6 @@
 <?php 
-include("header.php");
-include('sidebar.php');
+include("../header.php");
+include('trsidebar.php');
 $sql = "SELECT * from labtest_lists";
 $result = $con->query($sql);
 ?>
@@ -25,11 +25,11 @@ $result = $con->query($sql);
     <!-- Content Header (Page header) -->
     <section class="content-header">
      <h1>
-        Laboratory Tests 
+        Presciption
       </h1>
       <ol class="breadcrumb">
-        <li><a href="index.php"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li class="active">Laboratory </li>
+        <li><a href="doctor.php"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li class="active">Prescription </li>
       </ol>
        
     <div class="content">
@@ -77,8 +77,8 @@ $result = $con->query($sql);
           <!-- Custom Tabs -->
           <div class="nav-tabs-custom">
             <ul class="nav nav-tabs">
-              <li class="active"><a href="#tab_1" data-toggle="tab"><i class="fa fa-flask" aria-hidden="true"></i>&nbspLabtest</a></li>
-              <li><a href="#tab_2" data-toggle="tab"><i class="fa fa-plus" aria-hidden="true"></i>&nbspAdd New Labtest</a></li>
+              <li class="active"><a href="#tab_1" data-toggle="tab"><i class="fa fa-flask" aria-hidden="true"></i>&nbspPrescription List</a></li>
+              <li><a href="#tab_2" data-toggle="tab"><i class="fa fa-plus" aria-hidden="true"></i>&nbspAdd New Prescription</a></li>
             </ul>
             <div class="tab-content">
               <div class="tab-pane active" id="tab_1">
@@ -172,4 +172,4 @@ $result = $con->query($sql);
       
 
 
-<?php include('footer.php');?>
+<?php include('../footer.php');?>

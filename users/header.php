@@ -1,6 +1,6 @@
 <?php
 session_start();
-
+extract($_REQUEST);
 if (isset($_SESSION['email'])) {
 
   $user_id = $_SESSION['email'];
@@ -33,7 +33,7 @@ if (isset($_SESSION['email'])) {
    <head>
       <meta charset="utf-8">
       <meta http-equiv="X-UA-Compatible" content="IE=edge">
-      <title> Multi Users| Dashboard</title>
+      <title> CMS </title>
       <!-- Tell the browser to be responsive to screen width -->
      <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
@@ -67,7 +67,6 @@ if (isset($_SESSION['email'])) {
   <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
   <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
   <![endif]-->
-      <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
    </head>
      <body class="hold-transition skin-blue sidebar-mini">
          <div class="wrapper">

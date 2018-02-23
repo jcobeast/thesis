@@ -8,41 +8,44 @@
                      <a href="staff.php">
                      <i class="fa fa-dashboard"></i> <span>Dashboard</span></a>
                   </li>
-
-                   <li class="treeview">
-                  <a href="#">
-                  <i class="fa fa-money"></i> <span> Reimbursements  </span>
-                  <i class="fa fa-angle-left pull-right"></i>
-                  </a>
-                  <ul class="treeview-menu">
-                     <li><a href="reimbursements.php">Add Reimbursement </a></li>
-                     <li><a href="list_Reimbers.php">List Of Reimbursement Details</a></li>
-                  </ul>
-               </li>
-
-                  <li class="treeview">
-                     <a href="list_Batch.php">
-                     <i class="fa fa-users"></i> <span> Batch Report </span></a>
+                   <li>
+                     <a href="#">
+                     <i class="fa fa-users"></i><span>Manage Users</span>
+                     <i class="fa fa-angle-left pull-right"></i>
+                     </a>
+                        <ul class="treeview-menu">
+                           <li class="treeview">
+                              <a href="#">
+                              <i class="fa fa-users"></i><span>Patients</span>
+                               <i class="fa fa-angle-left pull-right"></i> </a>
+                                <ul class="treeview-menu">
+                                 <li><a href="add_patient.php">Add Patients </a></li>
+                                 <li><a href="list_of_patients.php">List Of Patients</a></li>
+                              </ul>
+                           </li>
+                        </ul>
                   </li>
-
-                   <li class="treeview">
-            <a href="">
-            <i class="fa fa-tasks"></i> <span> To Do List </span>
-            <i class="fa fa-angle-left pull-right"></i>
-            </a>
-            <ul class="treeview-menu">
-               <li><a href="add_todolist.php">Add To Do List</a></li>
-               <li><a href="todo_Listdetails.php">My To Do List </a></li>
-               <li><a href="myassign_todo_Listdetails.php">My Assign To Do List </a></li>
-            </ul>
-         </li>
-              
                   <li class="treeview">
-                     <a href="sumyProfile.php">
-                     <i class="fa fa-cog"></i> <span>Profile Settings </span></a>
+                     <a href="appointments.php">
+                     <i class="fa fa-calendar"></i> <span>Manage Appointment</span></a>
                   </li>
-
-               </ul>
+                  <li class="treeview">
+                     <a href="lab_test_list.php">
+                     <i class="fa fa-flask"></i> <span>Manage Laboratory Test</span></a>
+                  </li>
+                  <li class="treeview">
+                     <a href="medicine_stocks.php">
+                     <i class="fa fa-medkit"></i> <span>Manage Medicine Stocks</span></a>
+                  </li>
+                  <li class="treeview">
+                     <a href="invoice_list.php">
+                     <i class="fa fa-hospital-o"></i> <span>Invoice Lists</span></a>
+                  </li>
+                  <li class="treeview">
+                     <a href="staff-profile.php">
+                     <i class="fa fa-cogs"></i> <span>Profile Settings</span></a>
+                  </li>
+              </ul>
             </section>
             <!-- /.sidebar -->
-         </aside>
+</aside>

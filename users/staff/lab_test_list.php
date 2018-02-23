@@ -1,6 +1,6 @@
 <?php 
-include("header.php");
-include('sidebar.php');
+include("../header.php");
+include('susidebar.php');
 $sql = "SELECT * from labtest_lists";
 $result = $con->query($sql);
 ?>
@@ -172,4 +172,4 @@ $result = $con->query($sql);
       
 
 
-<?php include('footer.php');?>
+<?php include('../footer.php');?>

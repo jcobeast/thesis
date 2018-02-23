@@ -118,9 +118,9 @@
     }); 
 
 var ByCategory = {
-    A: ["San Jose City", "Cabanatuan City", "Munoz City", "Others"],
-    B: ["Bulacan", "Malolos", "Bocaue", "Others"],
-    C: ["Tarlac", "Camuiling", "Gerona", "Lapaz", "Others"]
+    'Nueva Ecija' : ["San Jose City", "Cabanatuan City", "Munoz City", "Others"],
+    'Bulacan': ["Bulacan", "Malolos", "Bocaue", "Others"],
+    'Tarlac': ["Tarlac", "Camuiling", "Gerona", "Lapaz", "Others"]
 }
 
     function changecat(value) {
@@ -137,17 +137,10 @@ var ByCategory = {
 
 /// patient info delete and update
 $(document).ready(function(){  
-      $('.patupdate').click(function(){
-           var id = $(this).parents("tr").attr("id"); 
-           $.ajax({  
-                url:"update_patient.php",  
-                method:"GET",  
-                data:{id:id},  
-                success:function(data){  
-                     window.location.href = 'update_patient.php';
-                }  
-           });  
-      }); 
+      $('.pat_id').click(function(){
+        $pat_id = $(this).attr('name');
+        $('#edit_query').load('update_patient.php?pat_id=' + $pat_id);
+      });
 
 // patient delete function
       $(".patdelete").click(function(){
@@ -163,7 +156,7 @@ $(document).ready(function(){
                },
                success: function(data) {
                     $("#"+id).remove();
-                    window.location.href = 'list_of_patients.php?error=true';  
+                    window.location.href = 'list_of_patients.php?delete=true';  
                }
             });
         }
@@ -247,7 +240,64 @@ $(document).ready(function(){
             });
         }
     }); 
- }); 
+ });
+
+ //////////////////////////////// 
+
+$(document).ready(function(){  
+      $('.test_id').click(function(){
+        $test_id = $(this).attr('name');
+        $('#edit_lab_query').load('update_labtest.php?test_id=' + $test_id);
+      });
+
+// lab delete function
+      $(".labdelete").click(function(){
+        var id = $(this).parents("tr").attr("id");
+        if(confirm('Are you sure to remove this record ?'))
+        {
+            $.ajax({
+               url: 'delete_labtest.php',
+               type: 'GET',
+               data: {id: id},
+               error: function() {
+                  alert('Something is wrong');
+               },
+               success: function(data) {
+                    $("#"+id).remove();
+                    window.location.href = 'lab_test_list.php?delete=true';  
+               }
+            });
+        }
+    }); 
+ });
+///////////////////////////////
+$(document).ready(function(){  
+      $('.med_id').click(function(){
+        $med_id = $(this).attr('name');
+        $('#edit_med_query').load('update_medicine.php?med_id=' + $med_id);
+      });
+
+// med delete function
+      $(".meddelete").click(function(){
+        var id = $(this).parents("tr").attr("id");
+        if(confirm('Are you sure to remove this record ?'))
+        {
+            $.ajax({
+               url: 'delete_medicine.php',
+               type: 'GET',
+               data: {id: id},
+               error: function() {
+                  alert('Something is wrong');
+               },
+               success: function(data) {
+                    $("#"+id).remove();
+                    window.location.href = 'medicine_stocks.php?error=true'; 
+               }
+            });
+        }
+    }); 
+ });
+ //////////////////////
 </script>
 
 

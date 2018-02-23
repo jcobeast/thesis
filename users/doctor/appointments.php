@@ -1,6 +1,6 @@
 <?php 
-include("header.php");
-include('sidebar.php');
+include("../header.php");
+include('trsidebar.php');
 
 ?>
 <div class="content-wrapper">
@@ -10,7 +10,7 @@ include('sidebar.php');
         APPOINTMENTS
       </h1>
       <ol class="breadcrumb">
-        <li><a href="index.php"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li><a href="doctor.php"><i class="fa fa-dashboard"></i> Home</a></li>
         <li class="active">Appointments </li>
       </ol>
        
@@ -75,12 +75,22 @@ include('sidebar.php');
                                  </tr>
                               </thead>
                               <tbody>
-                                     <?php  $sql = "SELECT * from appointments";
+                            <?php  
+                            $sql = "SELECT * from appointments";
+
+                            $sql = "SELECT appointments.app_id, 
+                                          patient_info.pat_firstname,
+                                          appointments.app_schedule,
+                                          appointments.app_description
+                                    FROM patient_info
+                                    INNER JOIN appointments ON patient_info.pat_id=appointments.pat_id;";
+
+
                                   $result = $con->query($sql);                 
                                 while($row = $result->fetch_assoc()): ?>
                               <tr>
                                 <td><?=$row['app_id'];?></td>
-                                <td><?=$row['app_patient'];?></td>
+                                <td><?=$row['pat_firstname'];?></td>
                                 <td><?=$row['app_schedule'];?></td>
                                 <td><?=$row['app_description'];?></td>
                                 <td>
@@ -171,4 +181,4 @@ include('sidebar.php');
       
 
 
-<?php include('footer.php');?>
+<?php include('../footer.php');?>

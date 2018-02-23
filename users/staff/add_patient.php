@@ -1,6 +1,6 @@
 <?php 
-include('header.php');
-include('sidebar.php');
+include('../header.php');
+include('susidebar.php');
 
 ?>
 <div class="content-wrapper">
@@ -10,7 +10,7 @@ include('sidebar.php');
       Add New Patient
       </h1>
       <ol class="breadcrumb">
-         <li><a href="index.php"><i class="fa fa-dashboard"></i> Home</a></li>
+         <li><a href="staff.php"><i class="fa fa-dashboard"></i> Home</a></li>
          <li class="active">Patient </li>
       </ol>
       <div class="content">
@@ -165,4 +165,4 @@ include('sidebar.php');
       </div>
    </section>
 </div>
-<?php include("footer.php");?>
+<?php include("../footer.php");?>
