@@ -30,7 +30,7 @@
                      <i class="fa fa-calendar"></i> <span>Manage Appointment</span></a>
                   </li>
                   <li class="treeview">
-                     <a href="lab_test_list.php">
+                     <a href="manage_prescription.php">
                      <i class="fa fa-stethoscope"></i> <span>Manage Prescription</span></a>
                   </li>
                   <li class="treeview">
