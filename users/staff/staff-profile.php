@@ -4,7 +4,7 @@ include('../header.php');
 include('susidebar.php');
 
 
-$sql = "select * from multiusers_admin";
+$sql = "select * from staff_info";
 $rows = $con->query($sql);
 
 
@@ -14,11 +14,11 @@ $rows = $con->query($sql);
    <!-- Content Header (Page header) -->
    <section class="content-header"> 
       <h1>
-      ADMIN PROFILE
+      STAFF PROFILE
       </h1>
       <ol class="breadcrumb">
          <li><a href="staff.php"><i class="fa fa-dashboard"></i> Home</a></li>
-         <li class="active">Admin Profile</li>
+         <li class="active">Staff Profile</li>
       </ol>
       <div class="content">
          <div class="container-fluid">
@@ -44,9 +44,7 @@ $rows = $con->query($sql);
                <div class="panel panel-info">
                   <div class="panel-heading">Profile Info </div>
                   <div class="panel-body">
-                      <?php while($row = $rows->fetch_assoc()): 
-                      $pwd = $row['admin_password'];
-
+                      <?php while($row = $rows->fetch_assoc())
                       ?>
                      <form class="form-horizontal" method="POST" role="form" enctype="multipart/form-data">                
                         <div class="form-group">
@@ -54,7 +52,7 @@ $rows = $con->query($sql);
                               <label for="name" class="control-label">Email </label><span id="sp">:</span>
                            </div>
                            <div class="col-md-6 col-sm-6 col-sx-12">
-                              <input type="email" class="form-control" name="tleamil" value="<?php echo $row['admin_email']; ?>" disabled>
+                              <input type="email" class="form-control" name="tleamil" value="<?php echo $session_email; ?>" disabled>
                            </div>
                         </div>
                         <div class="form-group">
@@ -62,7 +60,7 @@ $rows = $con->query($sql);
                               <label for="name" class="control-label">User Name </label><span id="sp">:</span>
                            </div>
                            <div class="col-md-6 col-sm-6 col-sx-12">
-                              <input type="text" class="form-control" name="tluname" value="<?php echo $row['admin_username']; ?>" disabled>
+                              <input type="text" class="form-control" name="tluname" value="<?php echo $session_name; ?>" disabled>
                            </div>
                         </div>
                         <div class="form-group">
@@ -71,12 +69,11 @@ $rows = $con->query($sql);
                            </div>
                            <div class="col-md-6 col-sm-6 col-sx-12">
                               <input type="password" class="form-control" name="tlpass" 
-                              value="<?php echo $pwd; ?>" disabled>
+                              value="<?php echo $session_pass; ?>" disabled>
                            </div>
                         </div>
                         <br>
                      </form>
-                     <?php endwhile; ?> 
                   </div>
                </div>
             </div>

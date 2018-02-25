@@ -20,6 +20,7 @@ if (isset($_SESSION['email'])) {
     while ($row_edit = mysqli_fetch_assoc($get_session_query)) {
       $session_name = $row_edit['username'];
       $session_email= $row_edit['email'];
+      $session_pass= $row_edit['password'];
     }
 
 } else {
