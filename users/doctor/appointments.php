@@ -76,14 +76,13 @@ include('trsidebar.php');
                               </thead>
                               <tbody>
                             <?php  
-                            $sql = "SELECT * from appointments";
-
+                        
                             $sql = "SELECT appointments.app_id, 
                                           patient_info.pat_firstname,
                                           appointments.app_schedule,
                                           appointments.app_description
                                     FROM patient_info
-                                    INNER JOIN appointments ON patient_info.pat_id=appointments.pat_id;";
+                                    INNER JOIN appointments ON patient_info.pat_id=appointments.pat_id";
 
 
                                   $result = $con->query($sql);                 

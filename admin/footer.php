@@ -67,15 +67,19 @@
       }
     )
 
-    $("#example1").DataTable();
+    $("#example1").DataTable({
+      "ordering": false
+    });
+
     $('#example2').DataTable({
       "paging": true,
       "lengthChange": false,
       "searching": false,
-      "ordering": true,
+      "ordering": false,
       "info": true,
       "autoWidth": false
     });
+
   });
 
       $('#date').datepicker({
@@ -292,6 +296,35 @@ $(document).ready(function(){
                success: function(data) {
                     $("#"+id).remove();
                     window.location.href = 'medicine_stocks.php?error=true'; 
+               }
+            });
+        }
+    }); 
+ });
+ //////////////////////
+////////appointments
+ ///////////////////////////////
+$(document).ready(function(){  
+      $('.appupdate').click(function(){
+        $app_id = $(this).attr('name');
+        $('#edit_apps_query').load('update_appointments.php?app_id=' + $app_id);
+      });
+
+// med delete function
+      $(".appdelete").click(function(){
+        var id = $(this).parents("tr").attr("id");
+        if(confirm('Are you sure to remove this record ?'))
+        {
+            $.ajax({
+               url: 'delete_appointments.php',
+               type: 'GET',
+               data: {id: id},
+               error: function() {
+                  alert('Something is wrong');
+               },
+               success: function(data) {
+                    $("#"+id).remove();
+                    window.location.href = 'appointments.php?error=true'; 
                }
             });
         }
