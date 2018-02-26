@@ -38,7 +38,7 @@
                      <i class="fa fa-bar-chart"></i> <span>Manage Report</span></a>
                   </li>
                   <li class="treeview">
-                     <a href="staff-profile.php">
+                     <a href="doctor_profile.php">
                      <i class="fa fa-cogs"></i> <span>Profile Settings</span></a>
                   </li>
               </ul>

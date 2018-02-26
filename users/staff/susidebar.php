@@ -38,6 +38,10 @@
                      <i class="fa fa-medkit"></i> <span>Manage Medicine Stocks</span></a>
                   </li>
                   <li class="treeview">
+                     <a href="reports.php">
+                     <i class="fa fa-file-text"></i> <span>Reports</span></a>
+                  </li>
+                  <li class="treeview">
                      <a href="invoice_list.php">
                      <i class="fa fa-hospital-o"></i> <span>Invoice Lists</span></a>
                   </li>
