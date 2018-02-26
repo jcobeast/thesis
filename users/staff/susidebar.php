@@ -39,7 +39,7 @@
                   </li>
                   <li class="treeview">
                      <a href="reports.php">
-                     <i class="fa fa-file-text"></i> <span>Reports</span></a>
+                     <i class="fa fa-bar-chart"></i> <span>Reports</span></a>
                   </li>
                   <li class="treeview">
                      <a href="invoice_list.php">
