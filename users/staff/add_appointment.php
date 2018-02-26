@@ -26,7 +26,7 @@ if(isset($_POST['submit'])) {
 
 
 	if ($aname && $asched && $adesc) {
-		$sql = "INSERT INTO `appointments`(`app_patient`, `app_schedule`, `app_description`) 
+		$sql = "INSERT INTO `appointments`(`pat_id`, `app_schedule`, `app_description`) 
         VALUES ('$aname','$asched','$adesc')";
 
         $result = $con->query($sql);

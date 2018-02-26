@@ -1,6 +1,7 @@
 <?php 
 include("header.php");
 include("sidebar.php");
+$sql = "SELECT * FROM appointments LEFT JOIN patient_info ON appointments.pat_id=patient_info.pat_id ORDER BY appointments.app_schedule DESC LIMIT 3";
 ?>
 <div class="content-wrapper">
    <!-- Content Header (Page header) -->
@@ -103,7 +104,7 @@ include("sidebar.php");
               <div class="col-md-8">
                         <div class="box box-primary">
                             <div class="box-header with-border">
-                              <h3 class="box-title">Appointment Status</h3>
+                              <h3 class="box-title">New Appointments</h3>
 
                               <div class="box-tools pull-right">
                                 <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
@@ -115,48 +116,37 @@ include("sidebar.php");
                             <div class="box-body table-responsive">
                               <table id="example1" class="table table-bordered table-hover dataTable">
                                 <thead>
-                                  <tr>
-                                    <th>Patient ID</th>
-                                    <th>Patient Fullname</th>
-                                    <th>Patient Age</th>
-                                    <th>Date Added</th>
-                                    <th>Patient Status</th>
-                                  </tr>
-                                </thead>
-                                <tbody>
-                                  <tr>
-                                        <?php 
-                                        $co    = "SELECT * FROM patient_info";
-                                        $coresult = $con->query($co);
-                                        $row  = mysqli_num_rows($coresult);
+                                 <tr>
+                                    <th> ID </th>
+                                    <th> Patient Name </th>
+                                    <th> Date of Appointment </th>
+                                    <th> Description </th>
+                                 
+                                 </tr>
+                              </thead>
+                              <tbody>
+                                  <?php  
+                                    $result = $con->query($sql);                 
+                                    while($row = $result->fetch_assoc()):
+                                      ?>
+                              <tr id="<?=$row['app_id'];?>">
+                                <td><?=$row['app_id'];?></td>
+                                <td><?=$row['pat_firstname'];?></td>
+                                <td><?=$row['app_schedule'];?></td>
+                                <td><?=$row['app_description'];?></td>
 
-                                        
-                                        ?>
-
-                                        <?php while($row = $coresult->fetch_assoc()): 
-
-                                        $date= new DateTime($row['pat_date_added']) ;  
-                                        
-
-                                        ?>
-                                    <td><?php echo $row['pat_id']; ?></td>
-                                    <td><?=ucfirst($row['pat_firstname']).' '.ucfirst($row['pat_middlename'][0]).'.'.' '.$row['pat_lastname'];?></td>
-                                    <td><?php echo $row['pat_age']; ?></td>
-
-                                    <td><?php echo $date->format('Y-m-d'); ?></td>
-                                    <td><span class="label label-success">Approved</span></td>
-                                  </tr>
-                                        <?php endwhile; ?>
-                                </tbody>
-                                <tfoot>
-                                  <tr>
-                                    <th>Patient ID</th>
-                                    <th>Patient Fullname</th>
-                                    <th>Patient Age</th>
-                                    <th>Date Added</th>
-                                    <th>Patient Status</th>
-                                  </tr>
-                                </tfoot>
+                              </tr>
+                              <?php endwhile; ?>
+                              </tbody>
+                              <tfoot>
+                                 <tr>
+                                    <th> ID </th>
+                                    <th> Patient Name </th>
+                                    <th> Date of Appointment </th>
+                                    <th> Description </th>
+                                  
+                                 </tr>
+                              </tfoot>
 
                               </table>
                             </div>
@@ -179,7 +169,7 @@ include("sidebar.php");
               <div class="alert alert-success alert-dismissible">
                 <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
                 <h4><i class="icon fa fa-bell"></i> Good day!</h4>
-                You have new appointment.
+                You have an appointment today.
               </div>
               <div class="alert alert-warning alert-dismissible">
                 <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>

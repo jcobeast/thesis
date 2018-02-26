@@ -1,11 +1,11 @@
 <?php 
 include("../header.php");
 include('trsidebar.php');
-$sql = "SELECT * from labtest_lists";
+$sql = "SELECT * from manage_prescriptions LEFT JOIN patient_info ON manage_prescriptions.pat_id = patient_info.pat_id";
 $result = $con->query($sql);
 ?>
 
-    <div class = "modal fade" id = "edit_lab" 
+    <div class = "modal fade" id = "edit_pres" 
       tabindex = "-1" role = "dialog" aria-labelledby = "myModallabel">
         <div class = "modal-dialog" role = "document">
           <div class = "modal-content">
@@ -14,7 +14,7 @@ $result = $con->query($sql);
               aria-label = "Close"><span aria-hidden = "true">&times;</span></button>
               <h4 class = "modal-title" id = "myModallabel">Edit Details</h4>
             </div>
-            <div id = "edit_lab_query">
+            <div id = "edit_pres_query">
             
             </div>
           </div>
@@ -85,23 +85,26 @@ $result = $con->query($sql);
                   <table id="example1" class="table table-bordered table-striped">
                               <thead>
                                  <tr>
-                                    <th> Test ID </th>
-                                    <th> Test Name </th>
-                                    <th> Test Description </th>
-                                    <th> Price </th>
+                                    <th> # </th>
+                                    <th> Patient Name </th>
+                                    <th> Date of Prescription </th>
+                                    <th> Description </th>
                                     <th> Action </th>
                                  </tr>
                               </thead>
                               <tbody>
                                 <?php                  
                                 while($row = $result->fetch_assoc()): ?>
-                                <tr id="<?php echo $row["test_id"]; ?>">
-                                <td><?=$row['test_id'];?></td>
-                                <td><?=$row['test_name'];?></td>
-                                <td><?=$row['test_desc'];?></td>
-                                <td><?=$row['test_amount'];?></td>
+                                <tr id="<?php echo $row["pat_id"]; ?>">
+                                <td><?=$row['pat_id'];?></td>
+                                <td><?=$row['pat_firstname'];?></td>
+                                <td><?=$row['date_of_prescription'];?></td>
+                                <td><?=$row['description'];?></td>
                                 <td> 
                                   <center>
+                                  <button type="button" class="btn btn-success btn-xs"><span class="glyphicon glyphicon-eye-open"></span>
+                                  </button>
+
                                   <button type="button" class = "btn btn-primary btn-xs test_id" name = "<?php echo $row['test_id']?>" data-toggle = "modal" data-target = "#edit_lab"><span class="glyphicon glyphicon-edit"></span></button>
 
                                   <button type="button" class="btn btn-danger btn-xs labdelete"><span class="glyphicon glyphicon-trash"></span></button>
@@ -112,40 +115,71 @@ $result = $con->query($sql);
                               </tbody>
                               <tfoot>
                                  <tr>
-                                    <th> Test ID </th>
-                                    <th> Test Name </th>
-                                    <th> Test Description </th>
-                                    <th> Price </th>
+                                    <th> # </th>
+                                    <th> Patient Name </th>
+                                    <th> Date of Prescription </th>
+                                    <th> Description </th>
                                     <th> Action </th>
                                  </tr>
                               </tfoot>
                   </table>
               </div>
               <!-- /.tab-pane -->
+              <?php 
+              $sql = "SELECT pat_id, pat_firstname FROM `patient_info`";
+              $result = $con->query($sql);   
+               ?>
               <div class="tab-pane" id="tab_2">
-                <form class="form-horizontal" role="form" method="post" action="add_labtest.php" enctype="multipart/form-data">
+                <form class="form-horizontal" role="form" method="post" action="add_prescription.php" enctype="multipart/form-data">
                       <div class="form-group">
                         <div class="col-md-2 col-sm-12 col-xs-12 col-md-offset-2">
-                           <label class="control-label">Test name </label><span id="sp">:</span> 
+                           <label class="control-label">Patient name </label><span id="sp">:</span> 
                         </div>
                         <div class="col-md-6 col-sm-12 col-xs-12">
-                           <input type="text" class="form-control" name="tname">
+                           <select class="form-control" name="patname">
+                               <?php 
+                              while($rows = $result->fetch_assoc()):
+                               ?>
+                                  <option value="<?= $rows['pat_id']; ?>"><?= $rows['pat_firstname'];?></option>
+                              <?php endwhile; ?>
+                           </select>
                         </div>
                       </div>
                       <div class="form-group">
                         <div class="col-md-2 col-sm-12 col-xs-12 col-md-offset-2">
-                           <label class="control-label">Test description </label><span id="sp">:</span> 
+                           <label class="control-label">Case History </label><span id="sp">:</span> 
                         </div>
                         <div class="col-md-6 col-sm-12 col-xs-12">
-                           <input type="text" class="form-control" name="tdesc">
+                           <textarea class="form-control" name="pathistory"></textarea>
                         </div>
                       </div>
                       <div class="form-group">
                         <div class="col-md-2 col-sm-12 col-xs-12 col-md-offset-2">
-                           <label class="control-label">Test amount payable </label><span id="sp">:</span> 
+                           <label class="control-label">Medication </label><span id="sp">:</span> 
                         </div>
                         <div class="col-md-6 col-sm-12 col-xs-12">
-                           <input type="text" class="form-control" name="tamount">
+                          <textarea class="form-control" name="medication"></textarea>
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <div class="col-md-2 col-sm-12 col-xs-12 col-md-offset-2">
+                           <label class="control-label">Description </label><span id="sp">:</span> 
+                        </div>
+                        <div class="col-md-6 col-sm-12 col-xs-12">
+                           <input type="text" class="form-control" name="desc">
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <div class="col-md-2 col-sm-12 col-xs-12 col-md-offset-2">
+                           <label class="control-label">Date </label><span id="sp">:</span> 
+                        </div>
+                        <div class="col-md-6 col-sm-12 col-xs-12">
+                           <div class="input-group date">
+                              <div class="input-group-addon">
+                                <i class="fa fa-calendar"></i>
+                              </div>
+                              <input type="text" class="form-control pull-right" name="date" id="datepicker">
+                           </div>
                         </div>
                       </div>
                       <div class="form-group">

@@ -5,7 +5,7 @@
                <ul class="sidebar-menu">
                   <li class="header">MAIN NAVIGATION</li>
                   <li class="treeview">
-                     <a href="staff.php">
+                     <a href="doctor.php">
                      <i class="fa fa-dashboard"></i> <span>Dashboard</span></a>
                   </li>
                    <li>
@@ -34,7 +34,7 @@
                      <i class="fa fa-stethoscope"></i> <span>Manage Prescription</span></a>
                   </li>
                   <li class="treeview">
-                     <a href="medicine_stocks.php">
+                     <a href="reports.php">
                      <i class="fa fa-bar-chart"></i> <span>Manage Report</span></a>
                   </li>
                   <li class="treeview">

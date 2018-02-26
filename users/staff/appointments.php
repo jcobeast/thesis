@@ -1,8 +1,23 @@
 <?php 
 include("../header.php");
 include('susidebar.php');
-
+$sql = "SELECT * FROM appointments LEFT JOIN patient_info ON appointments.pat_id=patient_info.pat_id ORDER BY appointments.app_schedule DESC";
 ?>
+
+<div class = "modal fade" id = "edit_apps" tabindex = "-1" role = "dialog" aria-labelledby = "myModallabel">
+        <div class = "modal-dialog" role = "document">
+          <div class = "modal-content">
+            <div class = "modal-header">
+              <button type = "button" class = "close" data-dismiss = "modal" 
+              aria-label = "Close"><span aria-hidden = "true">&times;</span></button>
+              <h4 class = "modal-title" id = "myModallabel">Edit Details</h4>
+            </div>
+            <div id = "edit_apps_query">
+            
+            </div>
+          </div>
+        </div>
+      </div>
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
@@ -10,7 +25,7 @@ include('susidebar.php');
         APPOINTMENTS
       </h1>
       <ol class="breadcrumb">
-        <li><a href="staff.php"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li><a href="index.php"><i class="fa fa-dashboard"></i> Home</a></li>
         <li class="active">Appointments </li>
       </ol>
        
@@ -37,7 +52,7 @@ include('susidebar.php');
    <?php if(isset($upderr)){ ?>
    <div class="alert alert-warning alert-dismissible" role="alert">
   <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-  <strong>Adding Appointment Unsuccessful.</strong>
+  <strong>Updating Appointment Successful.</strong>
 </div>
    <?php } ?>
            <?php if(isset($success)){ ?>
@@ -49,7 +64,7 @@ include('susidebar.php');
    <?php if(isset($error)){ ?>
    <div class="alert alert-danger alert-dismissible" role="alert">
   <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-  <strong>Deleted Unsuccessfully.</strong>
+  <strong>Deleted Successfully.</strong>
 </div>
    <?php } ?>
    <br>
@@ -75,19 +90,19 @@ include('susidebar.php');
                                  </tr>
                               </thead>
                               <tbody>
-                                     <?php  $sql = "SELECT * from appointments";
-                                  $result = $con->query($sql);                 
-                                while($row = $result->fetch_assoc()): ?>
-                              <tr>
+                                  <?php  
+                                    $result = $con->query($sql);                 
+                                    while($row = $result->fetch_assoc()):?>
+                              <tr id="<?=$row['app_id'];?>">
                                 <td><?=$row['app_id'];?></td>
-                                <td><?=$row['app_patient'];?></td>
+                                <td><?=$row['pat_firstname'];?></td>
                                 <td><?=$row['app_schedule'];?></td>
                                 <td><?=$row['app_description'];?></td>
                                 <td>
                                   <center>
-                                  <button type="button" class="btn btn-primary btn-xs"><span class="glyphicon glyphicon-edit"></span></button>
+                                  <button type="button" class="btn btn-primary btn-xs appupdate" name = "<?php echo $row['app_id']?>" data-toggle = "modal" data-target = "#edit_apps"><span class="glyphicon glyphicon-edit"></span></button>
 
-                                  <button type="button" class="btn btn-danger btn-xs"><span class="glyphicon glyphicon-trash"></span></button>
+                                  <button type="button" class="btn btn-danger btn-xs appdelete"><span class="glyphicon glyphicon-trash"></span></button>
                                   </center>
                                 </td>
 
