@@ -101,8 +101,7 @@ include('sidebar.php');
                               <input type="text" class="form-control pull-right" name="pbdate" id="datepicker">
                            </div>
                         </div>
-                     </div>
-                     
+                     </div>                  
                   </div>
                   
 
