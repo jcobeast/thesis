@@ -33,10 +33,10 @@
                      <a href="manage_prescription.php">
                      <i class="fa fa-stethoscope"></i> <span>Manage Prescription</span></a>
                   </li>
-                  <li class="treeview">
+                  <!-- <li class="treeview">
                      <a href="reports.php">
                      <i class="fa fa-bar-chart"></i> <span>Manage Report</span></a>
-                  </li>
+                  </li> -->
                   <li class="treeview">
                      <a href="doctor_profile.php">
                      <i class="fa fa-cogs"></i> <span>Profile Settings</span></a>

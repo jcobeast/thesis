@@ -102,9 +102,7 @@ $result = $con->query($sql);
                                 <td><?=$row['description'];?></td>
                                 <td> 
                                   <center>
-                                  <button type="button" class="btn btn-success btn-xs"><span class="glyphicon glyphicon-eye-open"></span>
-                                  </button>
-
+  
                                   <button type="button" class = "btn btn-primary btn-xs test_id" name = "<?php echo $row['test_id']?>" data-toggle = "modal" data-target = "#edit_lab"><span class="glyphicon glyphicon-edit"></span></button>
 
                                   <button type="button" class="btn btn-danger btn-xs labdelete"><span class="glyphicon glyphicon-trash"></span></button>
@@ -147,7 +145,7 @@ $result = $con->query($sql);
                       </div>
                       <div class="form-group">
                         <div class="col-md-2 col-sm-12 col-xs-12 col-md-offset-2">
-                           <label class="control-label">Case History </label><span id="sp">:</span> 
+                           <label class="control-label"> Case </label><span id="sp">:</span> 
                         </div>
                         <div class="col-md-6 col-sm-12 col-xs-12">
                            <textarea class="form-control" name="pathistory"></textarea>

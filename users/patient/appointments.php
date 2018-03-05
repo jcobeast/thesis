@@ -1,7 +1,7 @@
 <?php 
 include("../header.php");
-include('trsidebar.php');
-$sql = "SELECT * FROM appointments LEFT JOIN patient_info ON appointments.pat_id=patient_info.pat_id ORDER BY appointments.app_schedule DESC";
+include('psidebar.php');
+$sql = "SELECT * FROM appointments LEFT JOIN patient_info ON appointments.pat_id=patient_info.pat_id WHERE patient_info.username='$session_name'";
 ?>
 
 <div class = "modal fade" id = "edit_apps" tabindex = "-1" role = "dialog" aria-labelledby = "myModallabel">
@@ -22,11 +22,11 @@ $sql = "SELECT * FROM appointments LEFT JOIN patient_info ON appointments.pat_id
     <!-- Content Header (Page header) -->
     <section class="content-header">
      <h1>
-        APPOINTMENTS
+        MY APPOINTMENTS
       </h1>
       <ol class="breadcrumb">
         <li><a href="index.php"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li class="active">Appointments </li>
+        <li class="active">My Appointments </li>
       </ol>
        
         <div class="content">
@@ -87,7 +87,6 @@ $sql = "SELECT * FROM appointments LEFT JOIN patient_info ON appointments.pat_id
                                     <th> Date of Appointment </th>
                                     <th> Description </th>
                                     <th> Status </th>
-                                    <th> Details </th>
                                     <th> Action </th>
                                  </tr>
                               </thead>
@@ -99,7 +98,6 @@ $sql = "SELECT * FROM appointments LEFT JOIN patient_info ON appointments.pat_id
                                     $fname = $row['pat_firstname'].' '.$row['pat_lastname'];
 
                                       if ($row['status'] == "0") {
-
                                           $status = '<button type="button" class="btn btn-warning btn-xs">Pending</button>';
                                       } elseif ($row['status'] == "1") {
                                           $status = '<button type="button" class="btn btn-success btn-xs">Approved</button>';
@@ -115,7 +113,7 @@ $sql = "SELECT * FROM appointments LEFT JOIN patient_info ON appointments.pat_id
                                 <td><?=$row['app_schedule'];?></td>
                                 <td><?=$row['app_description'];?></td>
                                 <td><?php echo $status; ?></td>
-                                <td><a href="apo_approve.php?id=<?php echo $row['app_id'];?>" type="button" class="btn btn-primary btn-xs">Details</a></td>
+                         
                                 <td>
                                   <button type="button" class="btn btn-primary btn-xs appupdate" name = "<?php echo $row['app_id']?>" data-toggle = "modal" data-target = "#edit_apps"><span class="glyphicon glyphicon-edit"></span></button>
 
@@ -131,7 +129,6 @@ $sql = "SELECT * FROM appointments LEFT JOIN patient_info ON appointments.pat_id
                                     <th> Date of Appointment </th>
                                     <th> Description </th>
                                     <th> Status </th>
-                                    <th> Details </th>
                                     <th> Action </th>
                                  </tr>
                               </tfoot>
@@ -139,7 +136,7 @@ $sql = "SELECT * FROM appointments LEFT JOIN patient_info ON appointments.pat_id
               </div>
               <!-- /.tab-pane -->
               <?php 
-              $sql = "SELECT pat_id, pat_firstname FROM `patient_info`";
+              $sql = "SELECT pat_id, pat_firstname, username FROM `patient_info` WHERE username='$session_name'";
               $result = $con->query($sql);   
                ?>
               <div class="tab-pane" id="tab_2">

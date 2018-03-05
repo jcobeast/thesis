@@ -8,45 +8,20 @@
                      <a href="patient.php">
                      <i class="fa fa-dashboard"></i> <span>Dashboard</span></a>
                   </li>
-
+                   <li>
                   <li class="treeview">
-                     <a href="order_Management.php">
-                     <i class="fa fa-bars"></i> <span> Order History  </span></a>
-                  </li>
-                  
-                  <li class="treeview">
-                  <a href='cmmangement.php'>
-                  <i class="fa fa-clock-o"></i><span>Course Material Management</span></a>
+                     <a href="appointments.php">
+                     <i class="fa fa-calendar"></i> <span>View Appointments</span></a>
                   </li>
                   <li class="treeview">
-                     <a href="#">
-                        <i class="fa fa-quote-right"></i> <span> Refunds </span>
-                        <i class="fa fa-angle-left pull-right"></i>
-                     </a>
-                     <ul class="treeview-menu">
-                        <li><a href="refund_apply.php">Apply Refund </a></li>
-                        <li><a href="refund_list.php">Refund List</a></li>
-                     </ul>
+                     <a href="myrecords.php">
+                     <i class="fa fa-flask"></i> <span>My Records</span></a>
                   </li>
-
                   <li class="treeview">
-                     <a href="pmyProfile.php">
-                     <i class="fa fa-cog"></i> <span>Profile Settings </span></a>
+                     <a href="myprofile.php">
+                     <i class="fa fa-cogs"></i> <span>Profile Settings</span></a>
                   </li>
-
-                   <li class="treeview">
-            <a href="">
-            <i class="fa fa-tasks"></i> <span> To Do List </span>
-            <i class="fa fa-angle-left pull-right"></i>
-            </a>
-            <ul class="treeview-menu">
-               <li><a href="add_todolist.php">Add To Do List</a></li>
-               <li><a href="todo_Listdetails.php">My To Do List </a></li>
-               <li><a href="myassign_todo_Listdetails.php">My Assign To Do List </a></li>
-            </ul>
-         </li>
-
-               </ul>
+              </ul>
             </section>
             <!-- /.sidebar -->
-         </aside>
+</aside>
