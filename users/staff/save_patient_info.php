@@ -74,16 +74,28 @@ if(isset($_POST['submit'])) {
 
 
 	if ($puser && $pfname && $plname && $pmname && $pemail && $ppass && $pbdate && $pcont && $page && $pgrd && $padd) {
-		$sql = "INSERT INTO `patient_info`(`username`, `email`, `password`, `pat_firstname`, `pat_lastname`, `pat_middlename`, `birthdate`, `pat_age`, `pat_guardian`, `pat_address`, `pat_contnum`, `acc_type`) 
-        VALUES ('$puser', '$pemail', '$ppass', '$pfname','$plname','$pmname','$pbdate','$page','$pgrd','$padd','$pcont','3')";
 
-        $result = $con->query($sql);
-		$last_id = $con->insert_id;
+		$sql_u = "SELECT * FROM patient_info WHERE username='$puser'";
+  		$sql_e = "SELECT * FROM patient_info WHERE email='$pemail'";
+  		$res_u = mysqli_query($con, $sql_u);
+  		$res_e = mysqli_query($con, $sql_e);
 
-		if($result == True ){
-			echo "<script>window.location.assign('list_of_patients.php?asuccess=true');</script>";
+  		if (mysqli_num_rows($res_u) > 0) {
+	  	  	echo "<script>window.location.assign('add_patient.php?adderror=true');</script>";
+	  	}else if(mysqli_num_rows($res_e) > 0){
+	  	 	echo "<script>window.location.assign('add_patient.php?adderror=true');</script>";
+	  	}else{
+
+			$sql = "INSERT INTO `patient_info`(`username`, `email`, `password`, `pat_firstname`, `pat_lastname`, `pat_middlename`, `birthdate`, `pat_age`, `pat_guardian`, `pat_address`, `pat_contnum`, `acc_type`) 
+	        VALUES ('$puser', '$pemail', '$ppass', '$pfname','$plname','$pmname','$pbdate','$page','$pgrd','$padd','$pcont','3')";
+
+	        $result = $con->query($sql);
+			$last_id = $con->insert_id;
+
+			if($result == True ){
+				echo "<script>window.location.assign('list_of_patients.php?asuccess=true');</script>";
+			}
 		}
-
 	}
 }
 

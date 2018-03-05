@@ -31,6 +31,14 @@ include('susidebar.php');
             </div>
             <?php }
             ?>
+            <?php
+            if(isset($adderror)){?>
+            <div class="alert alert-danger" role="alert">
+               <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+               <strong>Patient already exists in the database!</strong>
+            </div>
+            <?php }
+            ?>
             <a href="list_of_patients.php" class="btn btn-primary pull-right"><i class="fa fa-navicon" aria-hidden="true"></i>&nbspList Of Patients</a>
             <br>
             <br>

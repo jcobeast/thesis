@@ -55,14 +55,14 @@
                      <a href="medicine_stocks.php">
                      <i class="fa fa-medkit"></i> <span>Medicine Stocks</span></a>
                   </li>
-                  <li class="treeview">
+                <!--   <li class="treeview">
                      <a href="invoice_list.php">
                      <i class="fa fa-hospital-o"></i> <span>Invoice Lists</span></a>
                   </li>
                   <li class="treeview">
                      <a href="database_backup.php">
                      <i class="fa fa-database"></i> <span>Back Ups</span></a>
-                  </li>
+                  </li> -->
                   <li class="treeview">
                      <a href="admin-profile.php">
                      <i class="fa fa-cogs"></i> <span>Profile Settings</span></a>

@@ -92,10 +92,13 @@ $sql = "SELECT * FROM appointments LEFT JOIN patient_info ON appointments.pat_id
                               <tbody>
                                   <?php  
                                     $result = $con->query($sql);                 
-                                    while($row = $result->fetch_assoc()):?>
+                                    while($row = $result->fetch_assoc()):
+
+                                    $fname = $row['pat_firstname'].' '.$row['pat_lastname'];
+                                    ?>
                               <tr id="<?=$row['app_id'];?>">
                                 <td><?=$row['app_id'];?></td>
-                                <td><?=$row['pat_firstname'];?></td>
+                                <td><?=$fname;?></td>
                                 <td><?=$row['app_schedule'];?></td>
                                 <td><?=$row['app_description'];?></td>
                                 <td>

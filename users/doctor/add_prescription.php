@@ -7,31 +7,31 @@ $patname = $pathistory = $medication = $desc = $date = "";
 if(isset($_POST['submit'])) {
 
 	if (empty($_POST['patname'])) {
-		echo "<script>window.location.assign('manage_prescription.php?upderr=true');</script>";
+		echo "<script>window.location.assign('manage_prescription.php?error=true');</script>";
 	} else {
 		$patname = mysqli_real_escape_string($con, $_POST['patname']);
 	} 
 
 	if (empty($_POST['pathistory'])) {
-		echo "<script>window.location.assign('manage_prescription.php?upderr=true');</script>";
+		echo "<script>window.location.assign('manage_prescription.php?error=true');</script>";
 	} else {
 		$pathistory = mysqli_real_escape_string($con, $_POST['pathistory']);
 	}
 
 	if (empty($_POST['medication'])) {
-		echo "<script>window.location.assign('manage_prescription.php?upderr=true');</script>";
+		echo "<script>window.location.assign('manage_prescription.php?error=true');</script>";
 	} else {
 		$medication = mysqli_real_escape_string($con, $_POST['medication']);
 	}
 
 	if (empty($_POST['desc'])) {
-		echo "<script>window.location.assign('manage_prescription.php?upderr=true');</script>";
+		echo "<script>window.location.assign('manage_prescription.php?error=true');</script>";
 	} else {
 		$desc = mysqli_real_escape_string($con, $_POST['desc']);
 	}
 
 	if (empty($_POST['date'])) {
-		echo "<script>window.location.assign('manage_prescription.php?upderr=true');</script>";
+		echo "<script>window.location.assign('manage_prescription.php?error=true');</script>";
 	} else {
 		$date = mysqli_real_escape_string($con, $_POST['date']);
 	}

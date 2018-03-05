@@ -40,6 +40,9 @@
 <script src="../../admin/dist/js/demo.js"></script>
 <!-- Sparkline -->
 <script src="../../admin/plugins/sparkline/jquery.sparkline.min.js"></script>
+<script src="../../admin/plugins/ckeditor/ckeditor.js"></script>
+<!-- Bootstrap WYSIHTML5 -->
+<script src="../../admin/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js"></script>
 
 <!-- page script -->
 <script>
@@ -91,7 +94,7 @@
      $('#datepicker').datepicker({
       autoclose: true,
       format: 'yyyy-mm-dd'  
-      }).datepicker("setDate", new Date()); 
+      }); 
    
 
      $('#datepicker1').datepicker({

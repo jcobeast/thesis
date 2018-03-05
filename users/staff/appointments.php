@@ -86,26 +86,41 @@ $sql = "SELECT * FROM appointments LEFT JOIN patient_info ON appointments.pat_id
                                     <th> Patient Name </th>
                                     <th> Date of Appointment </th>
                                     <th> Description </th>
+                                    <th> Status </th>
+                                    <th> Details </th>
                                     <th> Action </th>
                                  </tr>
                               </thead>
                               <tbody>
                                   <?php  
                                     $result = $con->query($sql);                 
-                                    while($row = $result->fetch_assoc()):?>
+                                    while($row = $result->fetch_assoc()):
+
+                                    $fname = $row['pat_firstname'].' '.$row['pat_lastname'];
+
+                                      if ($row['status'] == "0") {
+
+                                          $status = '<button type="button" class="btn btn-warning btn-xs">Pending</button>';
+                                      } elseif ($row['status'] == "1") {
+                                          $status = '<button type="button" class="btn btn-success btn-xs">Approved</button>';
+                                      } else {
+
+                                          $status = '<button type="button" class="btn btn-danger btn-xs">Rejected</button>';
+                                      }
+
+                                  ?>
                               <tr id="<?=$row['app_id'];?>">
                                 <td><?=$row['app_id'];?></td>
-                                <td><?=$row['pat_firstname'];?></td>
+                                <td><?=$fname;?></td>
                                 <td><?=$row['app_schedule'];?></td>
                                 <td><?=$row['app_description'];?></td>
+                                <td><?php echo $status; ?></td>
+                                <td><a href="apo_approve.php?id=<?php echo $row['app_id'];?>" type="button" class="btn btn-primary btn-xs">Details</a></td>
                                 <td>
-                                  <center>
                                   <button type="button" class="btn btn-primary btn-xs appupdate" name = "<?php echo $row['app_id']?>" data-toggle = "modal" data-target = "#edit_apps"><span class="glyphicon glyphicon-edit"></span></button>
 
-                                  <button type="button" class="btn btn-danger btn-xs appdelete"><span class="glyphicon glyphicon-trash"></span></button>
-                                  </center>
+                                  <button type="button" class="btn btn-danger btn-xs appdelete"><span class="glyphicon glyphicon-trash"></span></button> 
                                 </td>
-
                               </tr>
                               <?php endwhile; ?>
                               </tbody>
@@ -115,6 +130,8 @@ $sql = "SELECT * FROM appointments LEFT JOIN patient_info ON appointments.pat_id
                                     <th> Patient Name </th>
                                     <th> Date of Appointment </th>
                                     <th> Description </th>
+                                    <th> Status </th>
+                                    <th> Details </th>
                                     <th> Action </th>
                                  </tr>
                               </tfoot>

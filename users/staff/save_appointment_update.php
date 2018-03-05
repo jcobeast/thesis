@@ -5,8 +5,7 @@ include '../dbconfig.php';
 	$appsched = $_POST['appsched'];
 
     $con->query("UPDATE appointments
-        		SET app_description='$appdesc', 
-        			app_schedule= '$appsched'
+        		SET app_description='$appdesc'
         			
         		WHERE app_id='$_REQUEST[app_id]'");
 

@@ -39,9 +39,13 @@
 <script src="dist/js/demo.js"></script>
 <!-- Sparkline -->
 <script src="plugins/sparkline/jquery.sparkline.min.js"></script>
+<script src="plugins/ckeditor/ckeditor.js"></script>
+<!-- Bootstrap WYSIHTML5 -->
+<script src="plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js"></script>
 
 <!-- page script -->
 <script>
+
   $(function () {
 
     //Date range picker
@@ -66,6 +70,7 @@
         $('#daterange-btn span').html(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'))
       }
     )
+
 
     $("#example1").DataTable({
       "ordering": false

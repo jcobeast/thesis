@@ -86,6 +86,7 @@ $sql = "SELECT * FROM appointments LEFT JOIN patient_info ON appointments.pat_id
                                     <th> Patient Name </th>
                                     <th> Date of Appointment </th>
                                     <th> Description </th>
+                                    <th> Status </th>
                                     <th> Action </th>
                                  </tr>
                               </thead>
@@ -98,6 +99,7 @@ $sql = "SELECT * FROM appointments LEFT JOIN patient_info ON appointments.pat_id
                                 <td><?=$row['pat_firstname'];?></td>
                                 <td><?=$row['app_schedule'];?></td>
                                 <td><?=$row['app_description'];?></td>
+                                <td><button class="btn btn-xs btn-warning">pending</button></td>
                                 <td>
                                   <center>
                                   <button type="button" class="btn btn-primary btn-xs appupdate" name = "<?php echo $row['app_id']?>" data-toggle = "modal" data-target = "#edit_apps"><span class="glyphicon glyphicon-edit"></span></button>
@@ -115,6 +117,7 @@ $sql = "SELECT * FROM appointments LEFT JOIN patient_info ON appointments.pat_id
                                     <th> Patient Name </th>
                                     <th> Date of Appointment </th>
                                     <th> Description </th>
+                                    <th> Status </th>
                                     <th> Action </th>
                                  </tr>
                               </tfoot>
